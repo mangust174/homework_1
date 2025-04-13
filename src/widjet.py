@@ -18,6 +18,27 @@ def mask_account_number(account_number: str) -> str:
     return "**" + account_number[-4:]
 
 
+def mask_account_card(data: str) -> str:
+    """функция принимающая информацию о карте или счете"""
+    parts = data.split(' ', 1)
+    if len(parts) != 2:
+        return data
+
+first_part, number_part = parts
+    # Проверяем, является ли это счётом:
+    if first_part.split().lower().startswith("счет"):
+        masked_number = mask_account_number(number_part)
+        return f"{first_part} {masked_number}"
+    else:
+        # Иначе считаем, что это карта
+        masked_number = mask_card_number(number_part)
+        return f"{first_part} {masked_number}"
 
 
-
+def get_date(date_str: str) -> str:
+    """
+    Принимает дату в ISO-формате (например, "2024-03-11T02:26:18.671407")
+    и возвращает дату в формате "ДД.ММ.ГГГГ".
+    """
+    date_obj = datetime.fromisoformat(date_str)
+    return date_obj.strftime("%d.%m.%Y")
