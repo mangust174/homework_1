@@ -1,11 +1,13 @@
 from datetime import datetime
 from src.masks import get_mask_card_number, get_mask_account
 
+
 def mask_account_card(data: str) -> str:
     """Функция, принимающая информацию о карте или счете"""
     parts = data.rsplit(' ', 1)
     if len(parts) != 2:
         return data
+
 
     first_part, number_part = parts
     # Проверяем, является ли это счётом:
@@ -16,6 +18,7 @@ def mask_account_card(data: str) -> str:
         # Иначе считаем, что это карта
         masked_number = get_mask_card_number(number_part)
         return f"{first_part} {masked_number}"
+
 
 def get_date(date_str: str) -> str:
     """
