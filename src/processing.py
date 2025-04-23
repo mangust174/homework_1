@@ -1,7 +1,7 @@
 """фильтрация и сортировка по состоянию и дате"""
 
 from datetime import datetime
-from typing import List, Dict
+from typing import Dict, List
 
 
 def filter_by_state(items: List[Dict], state: str = "EXECUTED") -> List[Dict]:
