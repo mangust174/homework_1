@@ -6,3 +6,10 @@
 ```bash
 # Корень репозитория
 python -m pip install -e .
+## тестирование
+- в процессе используется **pytest** + **pytest -- cov** для тестов и покрытия кода
+### Установка зависимостей
+```bash
+pip install -r requirements-dev.txt
+# или, если файла нет:
+pip install pytest pytest-cov
