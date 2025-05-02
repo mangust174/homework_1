@@ -7,10 +7,9 @@ def mask_account_card(data: str) -> str:
     parts = data.rsplit(' ', 1)
     if len(parts) != 2:
         return data
-
-
     first_part, number_part = parts
     # Проверяем, является ли это счётом:
+
     if "счет" in first_part.lower():  # исправлено
         masked_number = get_mask_account(number_part)
         return f"{first_part} {masked_number}"
@@ -27,6 +26,7 @@ def get_date(date_str: str) -> str:
     """
     date_obj = datetime.fromisoformat(date_str)
     return date_obj.strftime("%d.%m.%Y")
+
 
 if __name__ == "__main__":
     print(mask_account_card("Visa Platinum 7000792289606361"))

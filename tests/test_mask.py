@@ -1,6 +1,7 @@
 import pytest
 from src.masks import get_mask_card_number, get_mask_account
 
+
 @pytest.mark.parametrize(
     "raw,expected",
     [
@@ -17,7 +18,7 @@ def test_get_mask_card_number(raw, expected):
     [
         ("40817810099910004312", "**4312"),
         ("1234", "**1234"),
-        ("7",   "**7"),
+        ("7", "**7"),
     ],
 )
 def test_get_mask_account(raw, expected):
