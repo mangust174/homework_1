@@ -1,32 +1,14 @@
 import pytest
+from datetime import datetime, timedelta
 
 @pytest.fixture(scope="module")
-def valid_card_numbers():
+def sample_operations():
+    base = datetime(2025, 5, 1)
+    to_iso = lambda dt: dt.isoformat()
+
     return [
-        ("1234567890123456", "1234 56** **** 3456"),
-        ("9876543210987654", "9876 54** **** 7654"),
-        ("1111222233334444", "1111 22** **** 4444"),
+        {"state": "EXECUTED",  "date": to_iso(base - timedelta(days=2))},
+        {"state": "CANCELED",  "date": to_iso(base - timedelta(days=1))},
+        {"state": "PENDING",   "date": to_iso(base)},
+        {"state": "EXECUTED",  "date": to_iso(base + timedelta(days=1))},
     ]
-
-@pytest.fixture(scope="module")
-def invalid_card_numbers():
-    return ["123456789012345", "abcdef"]
-
-@pytest.fixture(scope="module")
-def valid_accounts():
-    return [
-        ("1234567890", "**90"),
-        ("9876543210", "**10"),
-        ("111122223333", "**33"),
-    ]
-
-@pytest.fixture(scope="module")
-def invalid_accounts():
-    return ["abcde", "123"]
-
-@pytest.fixture(scope="module")
-def date_data():
-    return {
-        "valid": ("2024-03-11T02:26:18.671407", "11.03.2024"),
-        "invalid": ("not-a-date", None),
-    }

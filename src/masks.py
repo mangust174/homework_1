@@ -9,9 +9,9 @@ def get_mask_account(number_account: str) -> str:
     return f"**{number_account[-4:]}"
 
 # --- Основная часть ---
+if __name__ == "__main__":
+    card_number = input("введите номер карты: ")            # строка
+    number_account = input("введите номер счета: ")         # строка
 
-card_number = input("введите номер карты: ")            # строка
-number_account = input("введите номер счета: ")         # строка
-
-print(get_mask_card_number(card_number))
-print(get_mask_account(number_account))
+    print(get_mask_card_number(card_number))
+    print(get_mask_account(number_account))
